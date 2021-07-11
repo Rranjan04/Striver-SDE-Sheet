@@ -1,9 +1,9 @@
 package Day06;
 class ListNode{
-	int data;
+	int val;
 	ListNode next;
-	ListNode(int data){
-		this.data = data;
+	ListNode(int val){
+		this.val = val;
 		next = null;
 	}
 }
