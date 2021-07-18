@@ -6,6 +6,9 @@ class Node {
 	int val;
 	Node right;
 	Node left;
+	Node(int val){
+		this.val = val;
+	}
 }
 class Pair{
 	Node node;
