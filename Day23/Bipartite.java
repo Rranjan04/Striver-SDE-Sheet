@@ -7,6 +7,7 @@ import java.util.Queue;
 public class Bipartite {
 	// BFS
 	static boolean isBipartite(int[][] graph){
+		// O(N+E)
 		int[] visited = new int[graph.length];
 		Arrays.fill(visited, -1);
 		for(int i=0;i<visited.length;i++){
@@ -37,5 +38,29 @@ public class Bipartite {
 		return true;
 	}
 	// DFS
+	static boolean DFS(int[][] graph){
+		int[] visited = new int[graph.length];
+		Arrays.fill(visited, -1);
+		for(int i=0;i<visited.length;i++){
+			if(visited[i]==-1){
+				if(!helpDFS(graph,i,visited,-1)) return false;
+			}
+		}
+		return true;
+	}
+	static boolean helpDFS(int[][] graph, int src, int[] visited,int col){
+		visited[src] = col==-1?0:col==0?1:0;
+		for(int i=0;i<graph[src].length;i++){
+			if(graph[src][i]!=0){
+				if(visited[i]==visited[src]) return false;
+				if(visited[src]==0){
+					if (!helpDFS(graph, i, visited, 1)) return false;
+				}else{
+					if (!helpDFS(graph, i, visited, 0)) return false;
+				}
+			}
+		}
+		return true;
+	}
 	
 }
