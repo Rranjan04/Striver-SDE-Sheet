@@ -15,6 +15,7 @@ public class KMP {
 			}
 			if(j==M){
 				System.out.println("Found pattern at index "+(i-j));
+				j = lps[j-1];
 			}
 			else if(i<N && pat.charAt(j)!=txt.charAt(i)){
 				if(j!=0) j = lps[j-1];//find similar pattern
